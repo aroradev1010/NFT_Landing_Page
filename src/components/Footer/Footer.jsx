@@ -15,11 +15,7 @@ function Footer() {
       <nav>
         <div className="logo-con">
           <div className="logo">
-            <img
-              src="https://ideogram.ai/api/images/direct/uI56jxClTGSDW-NKaNEq5w.jpg"
-              width={36}
-              alt="logo"
-            />
+            <img src="/logo.png" width={75} alt="logo" />
             <h2>CryptoCanvas</h2>
           </div>
           <div className="input">

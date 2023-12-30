@@ -53,7 +53,7 @@ function FullPage() {
     <div className="fullPageStyled" ref={secRef}>
       <motion.div className="image" style={{ scale, x: xTransform }}>
         <img
-          src="https://ideogram.ai/api/images/direct/P2Fp_T9KSJyi7C5M2k8KPw.jpg"
+          src="https://ideogram.ai/api/images/direct/MMfyRZqjTUyvIk_ZfJcrZw.jpg"
           alt="nft"
           fill={true}
           className="fullPageImg"

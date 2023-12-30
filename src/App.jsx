@@ -10,6 +10,7 @@ import TextSection from "./TextSection.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import HorizontalWrapper from "./components/HorizontalWrapper.jsx";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Spline from "@splinetool/react-spline";
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -97,12 +98,11 @@ function App() {
         </SectionLayout>
         <SectionLayout>
           <motion.div className="video" ref={video} style={{ opacity, scale }}>
-            
             <video
               src="https://player.vimeo.com/progressive_redirect/playback/682521118/rendition/360p?loc=external&oauth2_token_id=57447761&signature=17b7ddfaf6241da53f6f8cd2a5a4fab1eb9ce035efb0dc937ffc214b7a9ef7e9"
               title="Video player"
               autoPlay // Enable autoplay
-              muted // Mute the video (required for some browsers to allow autoplay)
+              muted
               allowFullScreen // Enable fullscreen
               loop
             />

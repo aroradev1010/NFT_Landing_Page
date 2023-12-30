@@ -4,12 +4,13 @@
     min-height: 10vh;
     border-bottom: 1px solid var(--color-border);
     display: flex;
-    justify-content: spa ce-between;
+    justify-content: space-between;
     align-items: center;
     .logo {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      margin-right: 30px;
+
       cursor: pointer;
     }
 
@@ -96,13 +97,12 @@
   }
 }
 
-
 @media only screen and (max-width: 663px) {
-  .connectBtn{
+  .connectBtn {
     display: none;
   }
-  .header-content{
-    .heroImg{
+  .header-content {
+    .heroImg {
       width: 400px;
       height: 400px;
     }

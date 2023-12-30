@@ -41,11 +41,7 @@ const Header = () => {
       <div className="header">
         <nav className="nav">
           <div className="logo">
-            <img
-              src="https://ideogram.ai/api/images/direct/uI56jxClTGSDW-NKaNEq5w.jpg"
-              alt="logo"
-              width={36}
-            />
+            <img src="/logo.png" alt="logo" width={100} />
             <h2>CryptoCanvas</h2>
           </div>
           <div className="input search">
