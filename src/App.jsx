@@ -15,6 +15,7 @@ function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [visibleCards, setVisibleCards] = useState([]);
   const video = React.useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: video,
     offset: ["start end", "end start"],
@@ -115,14 +116,12 @@ function App() {
             ref={video}
             style={{ opacity, scale, display: isLargeScreen ? "" : "none" }}
           >
-            <video
-              src="https://player.vimeo.com/progressive_redirect/playback/682521118/rendition/360p?loc=external&oauth2_token_id=57447761&signature=17b7ddfaf6241da53f6f8cd2a5a4fab1eb9ce035efb0dc937ffc214b7a9ef7e9"
-              title="Video player"
-              autoPlay // Enable autoplay
-              muted
-              allowFullScreen // Enable fullscreen
-              loop
-            />
+            <iframe
+              src="https://www.youtube.com/embed/NNQLJcJEzv0?si=Nc19wRcs6zOLUv1V"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
           </motion.div>
         </SectionLayout>
 
