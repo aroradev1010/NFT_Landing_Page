@@ -61,4 +61,7 @@ a {
       flex-wrap: wrap;
     }
   }
+  * {
+    overflow-x: hidden;
+  }
 }

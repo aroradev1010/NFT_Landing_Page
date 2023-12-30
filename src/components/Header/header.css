@@ -51,7 +51,7 @@
   .header-content {
     padding: 0 10rem 5rem 10rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     gap: 4rem;
     min-height: calc(100vh - 10vh);
@@ -85,9 +85,10 @@
   }
 }
 
-@media only screen and (max-width: 995px) {
+@media only screen and (max-width: 1024px) {
   .header-content {
     display: flex;
+    
     flex-direction: column;
     margin-top: 30px;
 
