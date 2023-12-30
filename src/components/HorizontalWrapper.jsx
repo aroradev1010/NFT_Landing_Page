@@ -1,8 +1,21 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 function HorizontalWrapper({ children, direction, height }) {
   const scrollRef = useRef(null);
+  const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth > 1024);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLargeScreen(window.innerWidth > 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: scrollRef,
@@ -12,7 +25,7 @@ function HorizontalWrapper({ children, direction, height }) {
   const xTransform = useTransform(
     scrollYProgress,
     [0, 0.3, 1],
-    [0, 0, direction]
+    isLargeScreen ? [0, 0, direction] : [0, 0, 0]
   );
 
   return (

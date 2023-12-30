@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Button from "../Button/Button";
 import "./header.css";
 // import { Abril_Fatface } from "react/font/google";
 import hover3d from "../../utils/hover";
 import { FaRocket, FaWallet } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { cards } from "../../utils/card.js";
 
 const variants = {
   initial: {
@@ -22,6 +23,21 @@ const variants = {
 };
 
 const Header = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const isLargeScreen = windowWidth >= 1025;
   const hero = useRef(null);
 
   const hoverHero = hover3d(hero, {
@@ -42,7 +58,7 @@ const Header = () => {
         <nav className="nav">
           <div className="logo">
             <img src="/logo.png" alt="logo" width={100} />
-            <h2>CryptoCanvas</h2>
+            <h2 className="logoName">CryptoCanvas</h2>
           </div>
           <div className="input search">
             <input type="text" placeholder="Search" />
@@ -52,9 +68,7 @@ const Header = () => {
             <li>
               <a href="#">Home</a>
             </li>
-            <li>
-              <a href="#">Auctions</a>
-            </li>
+
             <li>
               <a href="#">Marketplace</a>
             </li>
@@ -74,8 +88,10 @@ const Header = () => {
           animate="animate"
         >
           <div className="text-content">
-            <h1 className="">Buy, collect and sell extraordinary NFTs</h1>
-            <p>
+            <h1 className="heroHeading">
+              Buy, collect and sell extraordinary NFTs
+            </h1>
+            <p className="heroText">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
               eaque tenetur ea commodi quae nisi, explicabo libero corporis
               dolor! Maiores illo hic sint, magni eius atque facere! Quos,
@@ -106,6 +122,33 @@ const Header = () => {
             </div>
           </div>
         </motion.div>
+        <h1 style={{ textAlign: "center" }}>New Products</h1>
+        <div
+          className="productImage"
+          style={{ display: isLargeScreen ? "none" : "flex" }}
+        >
+          {cards.map((card, index) => {
+            return (
+              <>
+                <img
+                  style={{ transform: hoverImage.transform }}
+                  src={card.image}
+                  alt="monkey"
+                  width={300}
+                  height={300}
+                  className="heroImg"
+                />
+                <div
+                  className="productImageText"
+                  style={{ textAlign: "center" }}
+                >
+                  <h3 style={{ marginBottom: "1rem" }}>{card.title}</h3>
+                  <p style={{ color: "#f2994a" }}>{card.description}</p>
+                </div>
+              </>
+            );
+          })}
+        </div>
       </div>
     </header>
   );

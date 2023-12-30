@@ -48,3 +48,9 @@
     border-bottom-right-radius: 8px;
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .text{
+    display: none;
+  }
+}

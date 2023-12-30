@@ -9,6 +9,7 @@
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
+  resize: none;
 }
 
 body {
@@ -49,6 +50,15 @@ a {
       border: none;
       width: 100%;
       height: 52rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .mainStyled {
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
     }
   }
 }

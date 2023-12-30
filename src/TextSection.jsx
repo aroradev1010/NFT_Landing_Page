@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const TextWrapper = ({ children }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const text = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: text,
@@ -24,9 +26,31 @@ const TextWrapper = ({ children }) => {
     ]
   );
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const isLargeScreen = windowWidth >= 1025;
+
   return (
     <div ref={text}>
-      <motion.p style={{ opacity, x, color: colorChange }}>{children}</motion.p>
+      <motion.p
+        style={{
+          opacity,
+          x: isLargeScreen ? x : null,
+          color: colorChange,
+        }}
+      >
+        {children}
+      </motion.p>
     </div>
   );
 };

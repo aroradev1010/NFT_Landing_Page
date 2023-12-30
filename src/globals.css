@@ -84,15 +84,21 @@ header {
     gap: 3rem;
     word-spacing: 30px;
     margin-bottom: 8rem;
-    
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  .textSectionStyled{
-    p{
+  .textSectionStyled {
+    p {
       font-size: 3rem;
-      
+    }
+  }
+}
+
+@media only screen and (max-width: 636px) {
+  .textSectionStyled {
+    p {
+      font-size: 2rem;
     }
   }
 }

@@ -27,6 +27,7 @@ function FullPage() {
   });
   // Calculate dynamic xTransform and scale values based on windowWidth
 
+  const isLargeScreen = windowWidth >= 1025;
   const xTransformValue = [
     -1000 * (windowWidth / 1920),
     300 * (windowWidth / 1920),
@@ -37,7 +38,7 @@ function FullPage() {
   const scaleValue = [
     0,
     0.5 * (windowWidth / 768),
-     0.6*(windowWidth / 1240),
+    0.6 * (windowWidth / 1240),
     1,
   ];
 
@@ -55,9 +56,13 @@ function FullPage() {
         <img
           src="https://ideogram.ai/api/images/direct/MMfyRZqjTUyvIk_ZfJcrZw.jpg"
           alt="nft"
-          fill={true}
+          // fill={true}
           className="fullPageImg"
-          style={{ objectFit: "cover", objectPosition: "center" }}
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+            display: isLargeScreen ? "block" : "none",
+          }}
         />
       </motion.div>
     </div>

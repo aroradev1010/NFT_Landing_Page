@@ -10,7 +10,6 @@ import TextSection from "./TextSection.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import HorizontalWrapper from "./components/HorizontalWrapper.jsx";
 import { motion, useScroll, useTransform } from "framer-motion";
-import Spline from "@splinetool/react-spline";
 
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -55,49 +54,67 @@ function App() {
     // For example, you might want 3 cards for small screens and 6 for larger screens
     return width < 1024 ? 3 : cards.length;
   };
+  const isLargeScreen = windowWidth >= 1025;
 
   return (
     <>
       <Header />
       <main className="mainStyled">
-        <SectionLayout>
-          <HorizontalWrapper height={"40rem"} direction={-1400}>
-            <div className="cards">
-              {visibleCards.map((card, index) => {
-                return (
-                  <Card
-                    key={index}
-                    title={card.title}
-                    description={card.description}
-                    image={card.image}
-                  />
-                );
-              })}
-            </div>
-          </HorizontalWrapper>
-        </SectionLayout>
+        <div style={{ display: isLargeScreen ? "" : "none" }}>
+          <SectionLayout>
+            <HorizontalWrapper height={"40rem"} direction={-1400}>
+              <div className="cards">
+                {visibleCards.map((card, index) => {
+                  return (
+                    <Card
+                      key={index}
+                      title={card.title}
+                      description={card.description}
+                      image={card.image}
+                    />
+                  );
+                })}
+              </div>
+            </HorizontalWrapper>
+          </SectionLayout>
+        </div>
+
         <FullPage />
-        <SectionLayout>
-          <HorizontalWrapper height={"40rem"} direction={1400}>
-            <div className="cards" style={{ right: 0 }}>
-              {visibleCards.map((card, index) => {
-                return (
-                  <Card
-                    key={index}
-                    title={card.title}
-                    description={card.description}
-                    image={card.image}
-                  />
-                );
-              })}
-            </div>
-          </HorizontalWrapper>
-        </SectionLayout>
+        <div style={{ display: isLargeScreen ? "" : "none" }}>
+          <SectionLayout>
+            <HorizontalWrapper height={"40rem"} direction={1400}>
+              <div
+                className="cards"
+                style={{
+                  right: isLargeScreen ? 0 : null,
+                }}
+              >
+                {visibleCards.map((card, index) => {
+                  return (
+                    <Card
+                      key={index}
+                      title={card.title}
+                      description={card.description}
+                      image={card.image}
+                    />
+                  );
+                })}
+              </div>
+            </HorizontalWrapper>
+          </SectionLayout>
+        </div>
+        <section>
+          <h1 style={{ textAlign: "center" }}>Information About NFTs</h1>
+        </section>
         <SectionLayout>
           <TextSection />
         </SectionLayout>
         <SectionLayout>
-          <motion.div className="video" ref={video} style={{ opacity, scale }}>
+          <motion.div
+            className="video"
+            ref={video}
+            style={{ opacity, scale, display: isLargeScreen ? "" : "none" }}
+          >
             <video
               src="https://player.vimeo.com/progressive_redirect/playback/682521118/rendition/360p?loc=external&oauth2_token_id=57447761&signature=17b7ddfaf6241da53f6f8cd2a5a4fab1eb9ce035efb0dc937ffc214b7a9ef7e9"
               title="Video player"
@@ -109,9 +126,11 @@ function App() {
           </motion.div>
         </SectionLayout>
 
-        <SectionLayout>
-          <TextSection />
-        </SectionLayout>
+        <div style={{ display: isLargeScreen ? "" : "none" }}>
+          <SectionLayout>
+            <TextSection />
+          </SectionLayout>
+        </div>
 
         <Footer />
       </main>
