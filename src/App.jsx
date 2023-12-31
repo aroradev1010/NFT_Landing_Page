@@ -117,9 +117,8 @@ function App() {
             style={{ opacity, scale, display: isLargeScreen ? "" : "none" }}
           >
             <iframe
-              src="https://www.youtube.com/embed/NNQLJcJEzv0?si=Nc19wRcs6zOLUv1V"
+              src="https://www.youtube.com/embed/Oz9zw7-_vhM?si=9dZMhyJQNWSwb0H9&autoplay=1&mute=1"
               title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             ></iframe>
           </motion.div>
