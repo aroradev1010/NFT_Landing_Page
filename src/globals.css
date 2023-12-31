@@ -76,14 +76,12 @@ header {
 }
 
 .textSectionStyled {
+  width: 100%;
   p {
     font-size: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 3rem;
-    word-spacing: 30px;
+    letter-spacing: 0.2rem;
     margin-bottom: 8rem;
+    text-align: center;
   }
 }
 
@@ -98,7 +96,10 @@ header {
 @media only screen and (max-width: 636px) {
   .textSectionStyled {
     p {
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
+  }
+  html {
+    overflow-x: hidden;
   }
 }

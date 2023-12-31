@@ -41,7 +41,7 @@ const TextWrapper = ({ children }) => {
   const isLargeScreen = windowWidth >= 1025;
 
   return (
-    <div ref={text}>
+    <div ref={text} className="textWrapperStyle">
       <motion.p
         style={{
           opacity,
